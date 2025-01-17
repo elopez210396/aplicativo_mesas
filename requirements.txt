@@ -1,6 +1,6 @@
 streamlit
 pandas
 streamlit_option_menu
-import mysql.connector as sql
+mysql.connector
 PIL
 io
