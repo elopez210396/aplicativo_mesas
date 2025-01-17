@@ -53,11 +53,13 @@ def pagina_menu():
     if not articulos_seleccionados_temporal.empty:
         st.header("Pedido")
         st.write(articulos_seleccionados_temporal)
+        st.metric('Total', int(articulos_seleccionados_temporal['precio total'].sum()))
         if st.button('Pedir'):
             if 'cuenta' in st.session_state:
                 st.session_state.cuenta = pd.concat([st.session_state.cuenta, articulos_seleccionados_temporal], ignore_index=True)
             else:
                 st.session_state['cuenta'] = articulos_seleccionados_temporal
-            
+            articulos_seleccionados_temporal = pd.DataFrame()
+            st.rerun()
             st.success('Tu pedido ha sido creado, pronto llegará a tu mesa')
-            #st.rerun()
+            

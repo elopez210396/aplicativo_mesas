@@ -36,9 +36,14 @@ if len (query_params)>0:
             if cliente:
                 # Crear un nuevo DataFrame con el cliente nuevo
                 nuevo_cliente = pd.DataFrame({'Nombre': [cliente]})
+                if 'clientes' not in st.session_state:
+                    st.session_state.clientes = pd.DataFrame()
                 st.session_state.clientes = pd.concat([st.session_state.clientes, nuevo_cliente], ignore_index=True)
-                clientes = clientes()
-        st.write(clientes)
+                
+        if 'clientes' in st.session_state:
+            clientes = clientes()
+            st.write(clientes)
+
     elif selected == 'Menu':
         menu.pagina_menu()        
 
@@ -46,5 +51,5 @@ if len (query_params)>0:
         st.write('Cuenta')
         cuenta.pagina_cuenta()
 else:   
-    st.write("No se ha proporcionado un número de mesa en la URL.")
+    st.write("Vuelva a escanea el código QR")
 

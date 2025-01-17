@@ -5,10 +5,10 @@ import io
 
 
 def obtener_articulos():
-    user='root',
-    password='',
-    host='127.0.0.1',
-    database='aplicativo_mesas',
+    user='root'
+    password=''
+    host='127.0.0.1'
+    database='aplicativo_mesas'
     port=3306
     db_connection = sql.connect(user=user, password=password, host=host, database=database,port=port)
     cursor = db_connection.cursor()
