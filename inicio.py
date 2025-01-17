@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-#import menu, cuenta, sugerencias, participantes
+import menu, cuenta, sugerencias, participantes
 import pandas as pd
 
 query_params = st.query_params.get_all(key='mesa')
@@ -40,12 +40,11 @@ if len (query_params)>0:
                 clientes = clientes()
         st.write(clientes)
     elif selected == 'Menu':
-        st.write('Menu')
-        #menu.pagina_menu()        
+        menu.pagina_menu()        
 
     elif selected == 'Cuenta':
         st.write('Cuenta')
-        #cuenta.pagina_cuenta()
+        cuenta.pagina_cuenta()
 else:   
     st.write("No se ha proporcionado un número de mesa en la URL.")
 
